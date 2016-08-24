@@ -1158,8 +1158,8 @@ public class uSkyBlock extends JavaPlugin implements uSkyBlockAPI, CommandManage
         orphanLogic = new OrphanLogic(this);
         islandLogic = new IslandLogic(this, directoryIslands, orphanLogic);
         notifier = new PlayerNotifier(getConfig());
-        playerLogic = new PlayerLogic(this);
         playerNameChangeManager = new PlayerNameChangeManager(this, playerDB);
+        playerLogic = new PlayerLogic(this);
         if (autoRecalculateTask != null) {
             autoRecalculateTask.cancel();
         }
