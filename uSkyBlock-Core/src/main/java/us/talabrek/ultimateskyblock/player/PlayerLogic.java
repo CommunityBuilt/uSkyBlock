@@ -19,13 +19,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static dk.lockfuglsang.minecraft.po.I18nUtil.tr;
+import us.talabrek.ultimateskyblock.uuid.PlayerDB;
 
 /**
  * Holds the active players
  */
 public class PlayerLogic {
     private static final Logger log = Logger.getLogger(PlayerLogic.class.getName());
-    private static final PlayerInfo UNKNOWN_PLAYER = new PlayerInfo("__UNKNOWN__", UUID.fromString("c1fc3ace-e6b2-37ed-a575-03e0d777d7f1"));
+    private static final PlayerInfo UNKNOWN_PLAYER = new PlayerInfo(PlayerDB.UNKNOWN_PLAYER_NAME, PlayerDB.UNKNOWN_PLAYER_UUID);
     private final LoadingCache<UUID, PlayerInfo> playerCache;
     private final uSkyBlock plugin;
     private final BukkitTask saveTask;
@@ -76,6 +77,7 @@ public class PlayerLogic {
         if (UNKNOWN_PLAYER.getUniqueId().equals(uuid)) {
              return UNKNOWN_PLAYER;
         }
+        
         return loadPlayerData(Bukkit.getOfflinePlayer(uuid));
     }
 
